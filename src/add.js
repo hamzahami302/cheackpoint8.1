@@ -11,7 +11,6 @@ export default class Todos extends React.Component{
         this.state={
           index:0,
           tab:["informatique","hello","good","shopping"],
-          value:"",
           
   
         }
@@ -46,14 +45,16 @@ export default class Todos extends React.Component{
 
             
          }
-         
+         change(e){
+          document.getElementById(e).style.textDecoration="line-through"
+        }
 
 
     render(){
         
     return(
             <div>
-        <input type="text" onChange={this.handleChange} />
+        <input type="text" valut={this.state.value}onChange={this.handleChange} />
 <button onClick={this.handleSubmit}>
       
       add
@@ -61,8 +62,9 @@ export default class Todos extends React.Component{
       <ul>
 
  {this.state.tab.map((element,index) =>(  
-           <li >
-             <div>{element}
+           <li id={index} onClick={()=>{this.change(index)}}>
+             <div >
+             {element}
            
             <button onClick={()=>{
               this.selectElement(index)
